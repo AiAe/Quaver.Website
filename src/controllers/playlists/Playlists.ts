@@ -115,11 +115,12 @@ export default class Playlists {
                 description: req.body.playlist_description
             });
 
-            // if(playlist.playlist.id && req.files.playlist_cover) {
-            //     await API.POST(req, `v1/playlist/${playlist.playlist.id}/cover`, {
-            //         cover: req.files.playlist_cover
-            //     });
-            // }
+            if(playlist.playlist.id && req.files.playlist_cover) {
+                // await API.POST(req, `v1/playlist/${playlist.playlist.id}/cover`, {
+                //     cover: req.files.playlist_cover
+                // });
+
+            }
 
             res.redirect(303, `/playlist/${playlist.playlist.id}`);
         } catch (err) {

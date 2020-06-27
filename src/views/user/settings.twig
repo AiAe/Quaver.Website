@@ -1,7 +1,53 @@
 {% extends "layouts/app.twig" %}
 {% block content %}
+    <section class="bg-image bg-dark py-5 py-lg-7 px-4 px-lg-0" style="background-color: rgb(52, 53, 56) !important;">
+        <img class="background" src="{{ assets('/img/cover.jpg') }}" alt="">
+        <div class="container">
+            <div class="row align-items-center text-center">
+                <div class="col-md-8 mx-auto">
+                    <h1 class="display-5 text-white font-weight-bold">
+                        Settings
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <section id="playlists">
+        <div class="container">
+            <div class="widget mt-4">
+                <div class="widget-header">Settings</div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <form accept-charset="UTF-8" enctype="multipart/form-data" method="POST">
+                        <div class="form-group">
+                            <label>Profile Cover</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="profile_cover" id="profile_cover">
+                                <label class="custom-file-label" for="profile_cover">Choose image</label>
+                            </div>
+                        </div>
+                        <input type="submit" name="submit" class="btn btn-primary" value="Save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
 
-{% block style %}
+{% block scripts %}
+    <script>
+        $(document).on('change', '#profile_cover', function () {
+            const label = $('label[for=profile_cover]');
+
+            try {
+                const name = $(this)[0].files[0].name;
+                label.text(name);
+            } catch (e) {
+                label.text('Choose image');
+            }
+        });
+    </script>
 {% endblock %}
